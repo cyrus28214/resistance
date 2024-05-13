@@ -88,7 +88,9 @@ void gauss(double **a, int n) {
                 a[j][k] -= c * a[i][k];
             }
         }
+    }
 
+    for (int i = 0; i < n; ++i) {
         a[i][n] /= a[i][i];
         a[i][i] = 1;
     }
