@@ -80,18 +80,18 @@ void gauss(double **a, int n) {
                 a[j] = temp;
             }
         }
+
+        double c = a[i][i];
+        //通常的算法此处需要特判c是否为0，但根据物理意义，本问题一定有唯一解，可以不用。
+        for (int k = 0; k <= n; k++) 
+            a[i][k] /= c;
+
         //消元
         for (int j = 0; j < n; j++) {
             if (i == j) continue;
-            double c = a[j][i] / a[i][i];//通常的算法此处需要判断分母是否为0，但根据物理意义，一定有唯一解，可以不用。
-            for (int k = 0; k <= n; k++) {
+            c = a[j][i];
+            for (int k = 0; k <= n; k++)
                 a[j][k] -= c * a[i][k];
-            }
         }
-    }
-
-    for (int i = 0; i < n; ++i) {
-        a[i][n] /= a[i][i];
-        a[i][i] = 1;
     }
 }
