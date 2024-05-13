@@ -71,9 +71,8 @@ double **array2d(int rows, int cols) {
 void gauss(double **a, int n) {
     //高斯-约旦消元法求解线性方程组
     for (int i = 0; i < n; i++) { //当前行
-        //先将当前行替换为列主元最大的行，这样可增加数值稳定性
-        for (int j = 0; j < n; j++) {
-            if (i == j) continue;
+        //将当前行替换为列主元最大的行
+        for (int j = i + 1; j < n; j++) {
             if (fabs(a[j][i]) > fabs(a[i][i])) {
                 double *temp = a[i];
                 a[i] = a[j];
